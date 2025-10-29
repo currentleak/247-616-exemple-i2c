@@ -15,7 +15,7 @@
 /*******************************************************************************************/
 /*******************************************************************************************/
 
-int Lire_ID_Capteur(int)
+int Lire_ID_Capteur(int);
 
 int main()
 {
@@ -29,7 +29,7 @@ int main()
 	}
 	
 	/// Liaison de l'adresse I2C au fichier (file descriptor) du bus I2C et Initialisation
-	if(ioctl(fdPortI2C, I2C_SLAVE_FORCE, adresse_I2C) < 0)
+	if(ioctl(fdPortI2C, I2C_SLAVE_FORCE, CAPTEUR_I2C_ADDRESS) < 0)
 	{ 	// I2C_SLAVE_FORCE if it is already in use by a driver (i2cdetect : UU)
 		perror("erreur: adresse du device I2C ");
 		close(fdPortI2C);
@@ -63,3 +63,4 @@ int Lire_ID_Capteur(int fdPortI2C)
 	
 	return Identification;
 }
+
